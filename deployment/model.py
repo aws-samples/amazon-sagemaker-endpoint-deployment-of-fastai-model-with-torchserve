@@ -8,9 +8,9 @@ class DynamicUnetDIY(SequentialEx):
 
     def __init__(
         self,
-        arch=resnet34,
-        n_classes=6,
-        img_size=(600, 400),
+        arch=resnet50,
+        n_classes=32,
+        img_size=(96, 128),
         blur=False,
         blur_final=True,
         y_range=None,
@@ -18,14 +18,16 @@ class DynamicUnetDIY(SequentialEx):
         bottle=False,
         init=nn.init.kaiming_normal_,
         norm_type=None,
-        self_attention=True,
-        act_cls=Mish,
+        self_attention=None,
+        act_cls=defaults.activation,
         n_in=3,
         cut=None,
         **kwargs
     ):
         meta = model_meta.get(arch, _default_meta)
-        encoder = create_body(arch, n_in, False, ifnone(cut, meta["cut"]))
+        encoder = create_body(
+            arch, n_in, pretrained=False, cut=ifnone(cut, meta["cut"])
+        )
         imsize = img_size
 
         sizes = model_sizes(encoder, size=imsize)
