@@ -34,7 +34,6 @@ class DIYSegmentation:
             else "cpu"
         )
         model_dir = properties.get("model_dir")
-        print(model_dir)
 
         manifest = ctx.manifest
         logger.error(manifest)
@@ -64,7 +63,7 @@ class DIYSegmentation:
         if image is None:
             image = data[0].get("body")
 
-        chipstack_transform = transforms.Compose(
+        image_transform = transforms.Compose(
             [
                 # must be consistent with model training
                 transforms.Resize((96, 128)),
@@ -78,7 +77,7 @@ class DIYSegmentation:
         image = Image.open(io.BytesIO(image)).convert(
             "RGB"
         )  # in case of an alpha channel
-        image = chipstack_transform(image).unsqueeze_(0)
+        image = image_transform(image).unsqueeze_(0)
         return image
 
     def inference(self, img):
