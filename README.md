@@ -65,7 +65,7 @@ path = untar_data(URLs.CAMVID_TINY)
 
 Secondly, define helper functions to calculate segmentation performance and read in segmentation mask for each training image.
 
-**Note**: it's tempting to define one-line python `lambda` functions to pass to fastai, however, this will introduce issue for serialization when we want to export a FastAI model. Therefore we avoid using anonymous python functions during FastAI modeling steps.
+**Note**: it's tempting to define one-line python `lambda` functions to pass to fastai, however, this will introduce issue on serialization when we want to export a FastAI model. Therefore we avoid using anonymous python functions during FastAI modeling steps.
 
 ```python
 def acc_camvid(inp, targ, void_code=0):
@@ -439,7 +439,7 @@ As described in the previous section, we re-define the image transform steps and
 
 #### `inference`
 
-Now convert image into Pytorch Tensor, load it into GPU is available, and pass it through the model.
+Now convert image into Pytorch Tensor, load it into GPU if available, and pass it through the model.
 
 ```python
     def inference(self, img):
@@ -564,11 +564,17 @@ plt.imshow(pred_decoded);
 
 ### Clean up
 
-Make sure that you delete the Amazon SageMaker endpoint to prevent any additional charges.
+Make sure that you delete the following resources to prevent any additional charges:
+
+1. Amazon SageMaker endpoint.
+2. Amazon SageMaker endpoint configuration.
+3. Amazon SageMaker model.
+4. Amazon Elastic Container Registry (ECR).
+5. Amazon Simple Storage Service (S3) Buckets.
 
 ## Conclusion
 
-This repository presented an end-to-end demonstration of deploying FastAI trained PyTorch models on TorchServe eager model and host in Amazon SageMaker Endpoint. You can use this repository as a template to deploy your own FastAI models. This approach eliminates the self-maintaining effort to build and manage an customized inference server, which helps you to speed up the process from training a cutting-edge deep learning model to its online application in real-world environment at scale.
+This repository presented an end-to-end demonstration of deploying FastAI trained PyTorch models on TorchServe eager model and host in Amazon SageMaker Endpoint. You can use this repository as a template to deploy your own FastAI models. This approach eliminates the self-maintaining effort to build and manage a customized inference server, which helps you to speed up the process from training a cutting-edge deep learning model to its online application in real-world at scale.
 
 If you have questions please create an issue or submit Pull Request on the GitHub repository.
 
