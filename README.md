@@ -151,20 +151,22 @@ torch.save(learn.model.state_dict(), "fasti_unet_weights.pth")
 
 It's also straightforward to obtain the FastAI prediction on a sample image.
 
-![sample_image](sample/Seq05VD_f00210.png)
+> 2013.04 - 'Streetview of a small neighborhood', with residential buildings, Amsterdam city photo by Fons Heijnsbroek, The Netherlands" by Amsterdam free photos & pictures of the Dutch city is marked under CC0 1.0. To view the terms, visit https://creativecommons.org/licenses/cc0/1.0/
+
+![sample_image](sample/street_view_of_a_small_neighborhood.png)
 
 ```python
-image_path = "Seq05VD_f00210.png"
+image_path = "street_view_of_a_small_neighborhood.png"
 pred_fastai = learn.predict(image_path)
 pred_fastai[0].numpy()
 >>>
-array([[26, 26, 26, ..., 26, 26, 26],
-       [26, 26, 26, ..., 26, 26, 26],
-       [26, 26, 26, ..., 26, 26, 26],
+array([[26, 26, 26, ...,  4,  4,  4],
+       [26, 26, 26, ...,  4,  4,  4],
+       [26, 26, 26, ...,  4,  4,  4],
        ...,
-       [17, 17, 17, ..., 17, 17, 17],
-       [17, 17, 17, ..., 17, 17, 17],
-       [17, 17, 17, ..., 17, 17, 17]])
+       [17, 17, 17, ..., 30, 30, 30],
+       [17, 17, 17, ..., 30, 30, 30],
+       [17, 17, 17, ..., 30, 30, 30]])
 ```
 
 ### PyTorch Model from FastAI Source Code
@@ -311,9 +313,9 @@ from torchvision import transforms
 from PIL import Image
 import numpy as np
 
-image_path = "Seq05VD_f00210.png"
+image_path = "street_view_of_a_small_neighborhood.png"
 
-image = Image.open(image_path)
+image = Image.open(image_path).convert("RGB")
 image_tfm = transforms.Compose(
     [
         transforms.Resize((96, 128)),
@@ -332,13 +334,13 @@ raw_out.shape
 pred_res = raw_out[0].argmax(dim=0).numpy().astype(np.uint8)
 pred_res
 >>>
-array([[26, 26, 26, ..., 26, 26, 26],
-       [26, 26, 26, ..., 26, 26, 26],
-       [26, 26, 26, ..., 26, 26, 26],
+array([[26, 26, 26, ...,  4,  4,  4],
+       [26, 26, 26, ...,  4,  4,  4],
+       [26, 26, 26, ...,  4,  4,  4],
        ...,
-       [17, 17, 17, ..., 17, 17, 17],
-       [17, 17, 17, ..., 17, 17, 17],
-       [17, 17, 17, ..., 17, 17, 17]], dtype=uint8)
+       [17, 17, 17, ..., 30, 30, 30],
+       [17, 17, 17, ..., 30, 30, 30],
+       [17, 17, 17, ..., 30, 30, 30]], dtype=uint8)
 
 np.all(pred_fastai[0].numpy() == pred_res)
 >>> True
@@ -534,7 +536,7 @@ The details of these steps are described in `notebook/04_SageMaker.ipynb` [[link
 Read an sample image.
 
 ```python
-file_name = "Seq05VD_f00210.png"
+file_name = "street_view_of_a_small_neighborhood.png"
 
 with open(file_name, 'rb') as f:
     payload = f.read()
@@ -557,7 +559,9 @@ pred_decoded_byte = base64.decodebytes(bytes(response["base64_prediction"], enco
 pred_decoded = np.reshape(
     np.frombuffer(pred_decoded_byte, dtype=np.uint8), (96, 128)
 )
-plt.imshow(pred_decoded);
+plt.imshow(pred_decoded)
+plt.axis("off")
+plt.show()
 ```
 
 ![sample_prediction_response](sample/sample_pred_mask.png)
