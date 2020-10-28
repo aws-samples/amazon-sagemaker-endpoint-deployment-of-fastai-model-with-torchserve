@@ -151,7 +151,7 @@ torch.save(learn.model.state_dict(), "fasti_unet_weights.pth")
 
 It's also straightforward to obtain the FastAI prediction on a sample image.
 
-> 2013.04 - 'Streetview of a small neighborhood', with residential buildings, Amsterdam city photo by Fons Heijnsbroek, The Netherlands" by Amsterdam free photos & pictures of the Dutch city is marked under CC0 1.0. To view the terms, visit https://creativecommons.org/licenses/cc0/1.0/
+> "2013.04 - 'Streetview of a small neighborhood', with residential buildings, Amsterdam city photo by Fons Heijnsbroek, The Netherlands" by Amsterdam free photos & pictures of the Dutch city is marked under CC0 1.0. To view the terms, visit https://creativecommons.org/licenses/cc0/1.0/
 
 ![sample_image](sample/street_view_of_a_small_neighborhood.png)
 
