@@ -132,7 +132,7 @@ For more details about the modeling process, refere to `notebook/01_U-net_Modell
 
 ## PyTorch Transfer Modeling from FastAI
 
-In this section we build a pure PyTorch model and transfer the model weights from FastAI. The following materials are inspired by "[Practical-Deep-Learning-for-Coders-2.0](https://github.com/muellerzr/Practical-Deep-Learning-for-Coders-2.0/blob/master/Computer%20Vision/06_Hybridizing_Models.ipynb)" by Zachary Mueller et al.
+In this section we build a pure PyTorch model and transfer the model weights from FastAI. The following materials are inspired by "[Practical-Deep-Learning-for-Coders-2.0](https://github.com/muellerzr/Practical-Deep-Learning-for-Coders-2.0/blob/master/Computer%20Vision/06_Hybridizing_Models.ipynb)" by Zachary Mueller *et al*.
 
 ### Export Model Weights from FastAI
 
