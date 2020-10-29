@@ -495,7 +495,7 @@ Step 2: Serve the Model
 Step 3: Call API and Get the Response (here we use [httpie](https://httpie.org/)). For a complete response see `sample/sample_output.txt` at [here](sample/sample_output.txt).
 
 ```bash
->>> time http POST http://127.0.0.1:8080/predictions/fastunet/ @sample/Seq05VD_f00210.png
+>>> time http POST http://127.0.0.1:8080/predictions/fastunet/ @sample/street_view_of_a_small_neighborhood.png
 
 HTTP/1.1 200
 Cache-Control: no-cache; no-store, must-revalidate, private
