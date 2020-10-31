@@ -534,7 +534,7 @@ The details of these steps are described in `notebook/04_SageMaker.ipynb` [[link
 
 ### Real-time Inference with Python SDK
 
-Read an sample image.
+Read a sample image.
 
 ```python
 file_name = "street_view_of_a_small_neighborhood.png"
@@ -569,7 +569,7 @@ plt.show()
 
 ### What's Next
 
-With an inference endpoint up and running, one could levearge its full power by exploring other features that are important for a Machine Learning product, including [AutoScaling](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html), Model monitoring with [Human-in-the-loop (HITL)](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-use-augmented-ai-a2i-human-review-loops.html) using Amazon Augmented AI ([A2I](https://aws.amazon.com/augmented-ai/)), and modeling iteration.
+With an inference endpoint up and running, one could levearge its full power by exploring other features that are important for a Machine Learning product, including [AutoScaling](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html), Model monitoring with [Human-in-the-loop (HITL)](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-use-augmented-ai-a2i-human-review-loops.html) using Amazon Augmented AI ([A2I](https://aws.amazon.com/augmented-ai/)), and incremental modeling iteration.
 
 ### Clean Up
 
