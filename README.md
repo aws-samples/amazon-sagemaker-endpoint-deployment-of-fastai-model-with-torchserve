@@ -523,7 +523,7 @@ In this section we deploy the FastAI trained Scene Segmentation PyTorch model wi
 
 ### Getting Started with Amazon SageMaker Endpoint
 
-There are 4 steps to setup an SageMaker Endpoint with TorchServe:
+There are 4 steps to setup a SageMaker Endpoint with TorchServe:
 
 1. Build customized Docker Image and push to Amazon Elastic Container Registry (ECR). The dockerfile is provided in root of this code repository, which helps setup FastAI and TorchServe dependencies.
 2. Compress `*.mar` into `*.tar.gz` and upload to Amazon Simple Storage Service (S3).
