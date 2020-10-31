@@ -172,7 +172,7 @@ array([[26, 26, 26, ...,  4,  4,  4],
 
 ### PyTorch Model from FastAI Source Code
 
-Next, we need to define the model in pure pytorch. In [Jupyter](https://jupyter.org/) notebook, one can investigate the FastAI source code by adding `??` in front of a function name. Here we look into `unet_learner` and `DynamicUnet`, by:
+Next, we need to define the model in pure PyTorch. In [Jupyter](https://jupyter.org/) notebook, one can investigate the FastAI source code by adding `??` in front of a function name. Here we look into `unet_learner` and `DynamicUnet`, by:
 
 ```python
 >> ??unet_learner
@@ -442,7 +442,7 @@ As described in the previous section, we re-define the image transform steps and
 
 #### `inference`
 
-Now convert image into Pytorch Tensor, load it into GPU if available, and pass it through the model.
+Now convert image into PyTorch Tensor, load it into GPU if available, and pass it through the model.
 
 ```python
     def inference(self, img):
