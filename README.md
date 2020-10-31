@@ -19,19 +19,20 @@
   - [Deployment to Amazon SageMaker Inference Endpoint](#deployment-to-amazon-sagemaker-inference-endpoint)
     - [Getting Started with Amazon SageMaker Endpoint](#getting-started-with-amazon-sagemaker-endpoint)
     - [Real-time Inference with Python SDK](#real-time-inference-with-python-sdk)
-    - [Clean up](#clean-up)
+    - [What's Next](#whats-next)
+    - [Clean Up](#clean-up)
   - [Conclusion](#conclusion)
   - [Reference](#reference)
 
 ## Introduction
 
-Over the past few years [FastAI](https://www.fast.ai/) has become one of the most cutting-edge and go-to choice for many machine learning use cases as an open-source Deep learning framework based on [PyTorch](https://pytorch.org/). It not only democratized deep learning and made it approachable to the general audiences, but also set as a role model on how scientific software shall be engineered especially in Python programming. Currently, however, to deploy a FastAI model to production environment often involves setting up and self-maintaining a customized inference solution, e.g. with [Flask](https://flask.palletsprojects.com/en/1.1.x/), which is time-consuming and distracting to manage and maintain issues like security, load balancing, services orchestration, etc.
+Over the past few years, [FastAI](https://www.fast.ai/) has become one of the most cutting-edge open-source deep learning framework and the go-to choice for many machine learning use cases based on [PyTorch](https://pytorch.org/). It not only democratized deep learning and made it approachable to the general audiences, but also set as a role model on how scientific software shall be engineered, especially in Python programming. Currently, however, to deploy a FastAI model to production environment often involves setting up and self-maintaining a customized inference solution, e.g. with [Flask](https://flask.palletsprojects.com/en/1.1.x/), which is time-consuming and distracting to manage and maintain issues like security, load balancing, services orchestration, etc.
 
 Recently, AWS developed *[TorchServe](https://github.com/pytorch/serve)* in partnership with Facebook, which is a flexible and easy-to-use open-source tool for serving PyTorch models. It removes the heavy lifting of deploying and serving PyTorch models with Kubernetes, and AWS and Facebook will maintain and continue contributing to TorchServe along with the broader PyTorch community. With TorchServe, many features are out-of-the-box and they provide full flexibility of deploying trained PyTorch models at scale so that a trained model can go to production deployment with few extra lines of code.
 
 Meanwhile, Amazon SageMaker endpoint has been a fully managed service that allows users to make real-time inferences via a REST API, and save Data Scientists and Machine Learning Engineers from managing their own server instances, load balancing, fault-tolerance, auto-scaling and model monitoring, etc. Amazon SageMaker endpoint provides different type of instances suitable for different tasks, including ones with GPU(s), which supports industry level machine learning inference and graphics-intensive applications while being [cost-effective](https://aws.amazon.com/sagemaker/pricing/).
 
-In this repository we demonstrate how to deploy the FastAI trained pyTorch model in TorchServe eager mode and host it in Amazon SageMaker Inference endpoint.
+In this repository we demonstrate how to deploy a FastAI trained PyTorch model in TorchServe eager mode and host it in Amazon SageMaker Inference endpoint.
 
 ## Getting Started with A FastAI Model
 
@@ -91,7 +92,7 @@ dls.one_batch()[0].shape[-2:], get_c(dls)
 >>> (torch.Size([96, 128]), 32)
 ```
 
-Next, setup a [U-Net](https://arxiv.org/abs/1505.04597) learner with a Residual Neural Network (ResNet) backbone, then trigger the FastAI training process.
+Next, setup an [U-Net](https://arxiv.org/abs/1505.04597) learner with a Residual Neural Network (ResNet) backbone, then trigger the FastAI training process.
 
 ```python
 learn = unet_learner(dls, resnet50, metrics=acc_camvid)
@@ -524,8 +525,8 @@ In this section we deploy the FastAI trained Scene Segmentation PyTorch model wi
 
 There are 4 steps to setup an SageMaker Endpoint with TorchServe:
 
-1. Build customised Docker Image and push to Amazon Elastic Container Registry (ECR). The dockerfile is provided in root of this code repository, which helps setup FastAI and TorchServe dependencies.
-2. Compress `*mar` into `*targ.gz` and upload to Amazon Simple Storage Service (S3).
+1. Build customized Docker Image and push to Amazon Elastic Container Registry (ECR). The dockerfile is provided in root of this code repository, which helps setup FastAI and TorchServe dependencies.
+2. Compress `*.mar` into `*.tar.gz` and upload to Amazon Simple Storage Service (S3).
 3. Create SageMaker model using the docker image from step 1 and the compressed model weights from step 2.
 4. Create the SageMaker endpoint using the model from step 3.
 
@@ -566,7 +567,11 @@ plt.show()
 
 ![sample_prediction_response](sample/sample_pred_mask.png)
 
-### Clean up
+### What's Next
+
+With an inference endpoint up and running, one could levearge its full power by exploring other features that are important for a Machine Learning product, including [AutoScaling](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html), Model monitoring with [Human-in-the-loop (HITL)](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-use-augmented-ai-a2i-human-review-loops.html) using Amazon Augmented AI ([A2I](https://aws.amazon.com/augmented-ai/)), and modeling iteration.
+
+### Clean Up
 
 Make sure that you delete the following resources to prevent any additional charges:
 
