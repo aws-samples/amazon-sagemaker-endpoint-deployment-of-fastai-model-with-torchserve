@@ -1,4 +1,4 @@
-FROM pytorch/pytorch
+FROM pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime
 
 ENV PYTHONUNBUFFERED TRUE
 
@@ -40,8 +40,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 
 # FASTAI
-RUN git clone https://github.com/fastai/fastai.git --depth 1  && git clone https://github.com/fastai/fastcore.git --depth 1
-RUN /bin/bash -c "cd fastai && pip install . && cd ../fastcore && pip install ."
+RUN git clone https://github.com/fastai/fastai.git  && git clone https://github.com/fastai/fastcore.git --depth 1
+RUN /bin/bash -c "cd fastai && git checkout 2.0.18 && pip install . && cd ../fastcore && pip install ."
 
 # TORCHSERVE
 RUN git clone https://github.com/pytorch/serve.git
