@@ -515,7 +515,7 @@ user    0m0.280s
 sys     0m0.039s
 ```
 
-For more details about TorchServe setup and usage, please refere to `notebook/03_TorchServe.ipynb` [[link](notebook/03_TorchServe.ipynb)].
+The first call would have longer latency due to model weights loading defined in `initialize`, but this will be moderated from the second call onward. For more details about TorchServe setup and usage, please refere to `notebook/03_TorchServe.ipynb` [[link](notebook/03_TorchServe.ipynb)].
 
 ## Deployment to Amazon SageMaker Inference Endpoint
 
