@@ -40,7 +40,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 
 # FASTAI
-RUN git clone https://github.com/fastai/fastai.git  && git clone https://github.com/fastai/fastcore.git
+RUN git clone https://github.com/fastai/fastai.git && git clone https://github.com/fastai/fastcore.git
 RUN /bin/bash -c "cd fastai && git checkout 2.0.18 && pip install . && cd ../fastcore && git checkout 1.1.0 && pip install ."
 
 # TORCHSERVE
