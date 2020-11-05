@@ -33,6 +33,8 @@ class DIYSegmentation:
             if torch.cuda.is_available()
             else "cpu"
         )
+
+        logger.info(f"Device on initialization is: {self.device}")
         model_dir = properties.get("model_dir")
 
         manifest = ctx.manifest
@@ -84,6 +86,7 @@ class DIYSegmentation:
         """
         Predict the chip stack mask of an image using a trained deep learning model.
         """
+        logger.info(f"Device on inference is: {self.device}")
         self.model.eval()
         inputs = Variable(img).to(self.device)
         outputs = self.model.forward(inputs)
