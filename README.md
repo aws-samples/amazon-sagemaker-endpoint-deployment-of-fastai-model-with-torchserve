@@ -129,7 +129,7 @@ Finally, we export the fastai model to use for following sections of this tutori
 learn.export("./fastai_unet.pkl")
 ```
 
-For more details about the modeling process, refere to `notebook/01_U-net_Modelling.ipynb` [[link](notebook/01_U-net_Modelling.ipynb)].
+For more details about the modeling process, refer to `notebook/01_U-net_Modelling.ipynb` [[link](notebook/01_U-net_Modelling.ipynb)].
 
 ## PyTorch Transfer Modeling from FastAI
 
@@ -351,7 +351,7 @@ Here we can see the difference: in FastAI model `fastai_unet.pkl`, it packages a
 
 **Note**: in `image_tfm` make sure the image size and normalization statistics are consistent with the training step. In our example here, the size is `96x128` and normalization is by default from [ImageNet](http://www.image-net.org/) as used in FastAI. If other transformations were applied during training, they may need to be added here as well.
 
-For more details about the PyTorch weights transferring process, please refere to `notebook/02_Inference_in_pytorch.ipynb` [[link](notebook/02_Inference_in_pytorch.ipynb)].
+For more details about the PyTorch weights transferring process, please refer to `notebook/02_Inference_in_pytorch.ipynb` [[link](notebook/02_Inference_in_pytorch.ipynb)].
 
 ## Deployment to TorchServe
 
@@ -359,7 +359,7 @@ In this section we deploy the PyTorch model to TorchServe. For installation, ple
 
 Overall, there are mainly 3 steps to use TorchServe:
 
-1. Archive the model into `*mar`.
+1. Archive the model into `*.mar`.
 2. Start the `torchserve`.
 3. Call the API and get the response.
 
@@ -515,7 +515,7 @@ user    0m0.280s
 sys     0m0.039s
 ```
 
-The first call would have longer latency due to model weights loading defined in `initialize`, but this will be mitigated from the second call onward. For more details about TorchServe setup and usage, please refere to `notebook/03_TorchServe.ipynb` [[link](notebook/03_TorchServe.ipynb)].
+The first call would have longer latency due to model weights loading defined in `initialize`, but this will be mitigated from the second call onward. For more details about TorchServe setup and usage, please refer to `notebook/03_TorchServe.ipynb` [[link](notebook/03_TorchServe.ipynb)].
 
 ## Deployment to Amazon SageMaker Inference Endpoint
 
