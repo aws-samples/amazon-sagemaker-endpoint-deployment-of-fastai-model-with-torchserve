@@ -40,7 +40,7 @@ In this section we train a FastAI model that can solve a real-world problem with
 
 ### Installation
 
-The first step is to install FastAI package, which is covered in it's [Github](https://github.com/fastai/fastai) repository.
+The first step is to install FastAI package, which is covered in its [Github](https://github.com/fastai/fastai) repository.
 
 > If you're using Anaconda then run:
 > ```python
