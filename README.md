@@ -583,7 +583,7 @@ Make sure that you delete the following resources to prevent any additional char
 
 ## Conclusion
 
-This repository presented an end-to-end demonstration of deploying FastAI trained PyTorch models on TorchServe eager model and host in Amazon SageMaker Endpoint. You can use this repository as a template to deploy your own FastAI models. This approach eliminates the self-maintaining effort to build and manage a customized inference server, which helps you to speed up the process from training a cutting-edge deep learning model to its online application in real-world at scale.
+This repository presented an end-to-end demonstration of deploying FastAI trained PyTorch models on TorchServe eager mode and host in Amazon SageMaker Endpoint. You can use this repository as a template to deploy your own FastAI models. This approach eliminates the self-maintaining effort to build and manage a customized inference server, which helps you to speed up the process from training a cutting-edge deep learning model to its online application in real-world at scale.
 
 If you have questions please create an issue or submit Pull Request on the [GitHub](https://github.com/aws-samples/amazon-sagemaker-endpoint-deployment-of-fastai-model-with-torchserve) repository.
 
