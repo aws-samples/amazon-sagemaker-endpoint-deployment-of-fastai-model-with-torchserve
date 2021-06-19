@@ -46,6 +46,7 @@ RUN /bin/bash -c "cd fastai && git checkout 2.0.18 && pip install . && cd ../fas
 # TORCHSERVE
 RUN git clone https://github.com/pytorch/serve.git
 RUN pip install ./serve/
+RUN pip install captum
 
 COPY ./deployment/dockerd-entrypoint.sh /usr/local/bin/dockerd-entrypoint.sh
 RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh
